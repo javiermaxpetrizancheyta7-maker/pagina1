@@ -4,6 +4,7 @@ import Cover from '@/components/Cover';
 import Footer from '@/components/Footer';
 import MusicPlayer from '@/components/MusicPlayer';
 import Navbar from '@/components/Navbar';
+import { AppStateProvider } from '@/context/AppStateContext';
 import { CoupleSettingsProvider } from '@/context/CoupleSettingsContext';
 import { MusicProvider, useMusic } from '@/context/MusicContext';
 import LettersSection from '@/sections/LettersSection';
@@ -68,10 +69,12 @@ function Experience() {
 
 export default function App() {
   return (
-    <CoupleSettingsProvider>
-      <MusicProvider>
-        <Experience />
-      </MusicProvider>
-    </CoupleSettingsProvider>
+    <AppStateProvider>
+      <CoupleSettingsProvider>
+        <MusicProvider>
+          <Experience />
+        </MusicProvider>
+      </CoupleSettingsProvider>
+    </AppStateProvider>
   );
 }
