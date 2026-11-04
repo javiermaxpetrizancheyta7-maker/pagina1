@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const TRACKS = ['/music.mp3', '/music1.mp3', '/music2.mp3', '/music3.mp3', '/music4.mp3'];
 
 interface BackgroundMusicProps {
   active: boolean;
@@ -7,6 +9,7 @@ interface BackgroundMusicProps {
 
 export default function BackgroundMusic({ active, volume }: BackgroundMusicProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [trackIndex, setTrackIndex] = useState(0);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -25,7 +28,11 @@ export default function BackgroundMusic({ active, volume }: BackgroundMusicProps
     } else {
       audio.pause();
     }
-  }, [active]);
+  }, [active, trackIndex]);
 
-  return <audio ref={audioRef} src="/music.mp3" loop preload="auto" />;
+  const handleEnded = () => {
+    setTrackIndex((current) => (current + 1) % TRACKS.length);
+  };
+
+  return <audio ref={audioRef} src={TRACKS[trackIndex]} preload="auto" onEnded={handleEnded} />;
 }
