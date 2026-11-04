@@ -1,15 +1,18 @@
-
-
 import { useEffect, useRef } from 'react';
 
 interface BackgroundMusicProps {
   active: boolean;
+  volume: number;
 }
 
-export default function BackgroundMusic({
-  active,
-}: BackgroundMusicProps) {
+export default function BackgroundMusic({ active, volume }: BackgroundMusicProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = volume;
+  }, [volume]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -24,12 +27,5 @@ export default function BackgroundMusic({
     }
   }, [active]);
 
-  return (
-    <audio
-      ref={audioRef}
-      src="/music.mp3"
-      loop
-      preload="auto"
-    />
-  );
+  return <audio ref={audioRef} src="/music.mp3" loop preload="auto" />;
 }

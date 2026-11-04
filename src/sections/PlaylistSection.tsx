@@ -42,7 +42,7 @@ function Cover({ src, className }: { src: string; className: string }) {
 
 export default function PlaylistSection() {
   const [songs, saveSongs] = usePersistentState<Song[]>('pu:songs', DEFAULT_SONGS);
-  const { setSongPlaying } = useMusic();
+  const { setSongPlaying, volume } = useMusic();
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState({ current: 0, duration: 0 });
@@ -53,6 +53,10 @@ export default function PlaylistSection() {
   const song = songs[safeIndex];
   const youtubeId = song ? getYouTubeId(song.audioUrl) : null;
   const hasAudio = isDirectAudio(song);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume;
+  }, [volume]);
 
   useEffect(() => {
     const audio = audioRef.current;

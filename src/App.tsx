@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import AmbientBackground from '@/components/AmbientBackground';
 import Cover from '@/components/Cover';
 import Footer from '@/components/Footer';
+import MusicPlayer from '@/components/MusicPlayer';
 import Navbar from '@/components/Navbar';
 import { CoupleSettingsProvider } from '@/context/CoupleSettingsContext';
 import { MusicProvider, useMusic } from '@/context/MusicContext';
@@ -22,7 +23,7 @@ const TRANSITION_MS = 1100;
 
 function Experience() {
   const [phase, setPhase] = useState<Phase>('cover');
-  const { toggleMusic } = useMusic();
+  const { start } = useMusic();
 
   useEffect(() => {
     if (phase !== 'leaving') return;
@@ -31,7 +32,7 @@ function Experience() {
   }, [phase]);
 
   const enter = () => {
-    toggleMusic();
+    start();
     setPhase('leaving');
   };
 
@@ -58,6 +59,7 @@ function Experience() {
             <SurpriseSection />
           </main>
           <Footer />
+          <MusicPlayer />
         </div>
       )}
     </div>

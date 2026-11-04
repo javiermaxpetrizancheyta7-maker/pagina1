@@ -1,7 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowUp, Heart, Menu, Music, Settings, VolumeX, X } from 'lucide-react';
+import { ArrowUp, Heart, Menu, Settings, X } from 'lucide-react';
 import { useCoupleSettings } from '@/context/CoupleSettingsContext';
-import { useMusic } from '@/context/MusicContext';
 import { NAV_SECTIONS } from '@/data/sections';
 
 export default function Navbar() {
@@ -9,7 +8,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const { openSettings } = useCoupleSettings();
-  const { musicOn, toggleMusic } = useMusic();
 
   useEffect(() => {
     const onScroll = () => {
@@ -51,14 +49,6 @@ export default function Navbar() {
           </button>
 
           <div className="flex items-center gap-1">
-            <button
-              onClick={toggleMusic}
-              aria-label={musicOn ? 'Desactivar música' : 'Activar música'}
-              title={musicOn ? 'Desactivar música' : 'Activar música'}
-              className="btn-icon"
-            >
-              {musicOn ? <Music className="h-5 w-5 text-cherry-600" /> : <VolumeX className="h-5 w-5" />}
-            </button>
             <button onClick={openSettings} aria-label="Ajustes" title="Ajustes" className="btn-icon">
               <Settings className="h-5 w-5" />
             </button>

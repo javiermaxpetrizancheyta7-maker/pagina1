@@ -109,7 +109,7 @@ export const DEFAULT_SONGS: Song[] = [
     artist: 'Emmit Fenn',
     description: '',
     cover: '',
-    audioUrl: 'https://www.youtube.com/watch?v=jzFhkjsizqc',
+    audioUrl: '/music.mp3',
   },
 ];
 
