@@ -39,7 +39,7 @@ export default function LetterDialog({ letter, onClose, onSave }: LetterDialogPr
         <label className="block">
           <span className="label">Mensaje</span>
           <textarea
-            className="input min-h-[200px] resize-y leading-relaxed"
+            className="input min-h-[320px] resize-y leading-relaxed"
             maxLength={2000}
             value={form.text}
             onChange={(e) => setForm({ ...form, text: e.target.value })}

@@ -11,7 +11,7 @@ export default function LetterEnvelope({ letter, onEdit }: LetterEnvelopeProps) 
   const [open, setOpen] = useState(false);
 
   return (
-    <article className="card flex flex-col p-6 md:p-8">
+    <article className={`card flex flex-col p-6 transition-[grid-column] md:p-8 ${open ? 'md:col-span-2' : ''}`}>
       <button
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
