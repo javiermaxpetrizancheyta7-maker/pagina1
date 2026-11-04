@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-100 font-body text-ink-900 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-blush-300 text-ink-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-blush-200/80 bg-white/85 shadow-[0_24px_60px_-28px_rgba(154,18,52,0.28)] backdrop-blur-md;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.3em] text-cherry-600;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-800;
+  }
+
+  .input {
+    @apply w-full rounded-2xl border border-dusty-200 bg-white px-4 py-3 text-ink-900 placeholder:text-dusty-400 transition duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blush-400;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cherry-600 px-6 py-3 text-sm font-medium tracking-wide text-white shadow-lg shadow-cherry-600/25 transition duration-300 hover:-translate-y-0.5 hover:bg-cherry-500 hover:shadow-xl hover:shadow-cherry-600/30 active:translate-y-0 active:scale-95 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-dusty-300 bg-white/80 px-5 py-2.5 text-sm font-medium text-ink-800 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-blush-400 hover:bg-blush-50 hover:shadow-md active:scale-95 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-icon {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full text-ink-600 transition duration-200 hover:bg-blush-100 hover:text-cherry-600 active:scale-90;
+  }
+}
